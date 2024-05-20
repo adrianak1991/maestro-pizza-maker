@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import List
 
 import pandas as pd
+import warnings
 
 from maestro_pizza_maker.pizza import Pizza
 
@@ -33,33 +34,71 @@ class PizzaMenu:
         # and ingredients contains a list of ingredients that the pizza contains
         #
         # The dataframe should be sorted by the price column in a descendent order
-        pass
-
+        ### Sorting by ingredients is not defined
+        pizzas_df = []
+        for pizza in self.pizzas:
+            pizzas_df.append(
+                {
+                    "name": pizza.name,
+                    "price": pizza.price,
+                    "protein": pizza.protein,
+                    "average_fat": pizza.average_fat,
+                    "carbohydrates": pizza.carbohydrates,
+                    "calories": pizza.calories,
+                    "ingredients": pizza.ingredients,
+                }
+            ) 
+        if sort_by!="ingredients":
+            return pd.DataFrame(pizzas_df).sort_values(by = sort_by, ascending=not descendent)
+        else:
+            warnings.warn("Sorting by ingredients is not defined")
+            return pd.DataFrame(pizzas_df)
+       
     @property
     def cheapest_pizza(self) -> Pizza:
         # TODO: return the cheapest pizza from the menu
-        pass
+       return min(self.pizzas, key=lambda pizza: pizza.price)
 
+    @property
+    def most_expensive_pizza(self) -> Pizza:
+        # TODO: return the most expensive pizza from the menu
+       return max(self.pizzas, key=lambda pizza: pizza.price)
+        
     @property
     def most_caloric_pizza(self) -> Pizza:
         # TODO: return the most caloric pizza from the menu
-        pass
+        return max(self.pizzas, key=lambda pizza: pizza.calories)
 
+    @property
+    def fewest_calories_pizza(self) -> Pizza:
+        # TODO: return the fewest calories pizza from the menu
+        return min(self.pizzas, key=lambda pizza: pizza.calories)
+        
+    @property
+    def most_protein_pizza(self) -> Pizza:
+        # TODO: return the most proteinaceous pizza from the menu
+        return max(self.pizzas, key=lambda pizza: pizza.protein)
+        
     def get_most_fat_pizza(self, quantile: float = 0.5) -> Pizza:
         # TODO: return the most fat pizza from the menu
         # consider the fact that fat is random and it is not always the same, so you should return the pizza that has the most fat in the quantile of cases specified by the quantile parameter
-        pass
+        return max(self.pizzas, key=lambda pizza: np.percentile(pizza.fat,quantile*100))
 
     def add_pizza(self, pizza: Pizza) -> None:
         # TODO: code a function that adds a pizza to the menu
+        self.pizzas.append(pizza)
         pass
 
     def remove_pizza(self, pizza: Pizza) -> None:
         # TODO: code a function that removes a pizza from the menu
         # do not forget to check if the pizza is actually in the menu
         # if it is not in the menu, raise a ValueError
+        if (pizza in self.pizzas):
+            self.pizzas.remove(pizza)
+        else:
+            raise ValueError("The pizza, you want to remove, is not an element of the menu.")
         pass
 
     def __len__(self) -> int:
         # TODO: return the number of pizzas in the menu
-        pass
+        return len(self.pizzas)
