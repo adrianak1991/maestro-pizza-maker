@@ -88,7 +88,7 @@ class Pizza:
         # TODO: implement average fat calculation
         # HINT: check the `PizzaIngredients` class properly, you will find a `fat` property there which is a numpy array representing the drawings from the fat distribution
         # since fat is a random variable, we will calculate the average fat of the pizza by averaging the fat vectors of the ingredients
-        return sum(ingredient.value.fat.mean for ingredient in self.ingredients)
+        return sum(np.mean(ingredient.value.fat) for ingredient in self.ingredients)
          
     @property
     def carbohydrates(self) -> float:

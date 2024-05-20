@@ -11,6 +11,8 @@ from maestro_pizza_maker.pizza_menu import PizzaMenu
 
 from sklearn.linear_model import LinearRegression 
 
+import numpy as np
+
 def menu_sensitivity_protein(menu: PizzaMenu) -> float:
     # TODO: implement according to the description above
     model = LinearRegression()

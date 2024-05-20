@@ -159,32 +159,32 @@ def minimize_price(
     # solution
     return Pizza(
         dough=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.DOUGH and x[i].x == 1
         ][0],
         sauce=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.SAUCE and x[i].x == 1
-        ],
+        ][0],
         cheese=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.CHEESE and x[i].x == 1
         ],
         meat=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.MEAT and x[i].x == 1
         ],
         vegetables=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.VEGETABLE and x[i].x == 1
         ],
         fruits=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(len(ingredients))
             if ingredients[i].value.type == IngredientType.FRUIT and x[i].x == 1
         ],
@@ -362,33 +362,33 @@ def maximize_taste_penalty_price(
     # solution
     return Pizza(
         dough=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(n)
             if ingredients[i].value.type == IngredientType.DOUGH and x[i].x == 1
         ][0],
         sauce=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(n)
             if ingredients[i].value.type == IngredientType.SAUCE and x[i].x == 1
         ][0],
         cheese=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(n)
             if ingredients[i].value.type == IngredientType.CHEESE and x[i].x == 1
         ],
         meat=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(n)
             if ingredients[i].value.type == IngredientType.MEAT and x[i].x == 1
         ],
         vegetables=[
-            ingredients[i].value
+            ingredients[i]
             for i in range(n)
             if ingredients[i].value.type == IngredientType.VEGETABLE and x[i].x == 1
         ],
         fruits=[
-            ingredients[i].value
-            for i in range(len(ingredients))
+            ingredients[i]
+            for i in range(n)
             if ingredients[i].value.type == IngredientType.FRUIT and x[i].x == 1
         ],
     )
