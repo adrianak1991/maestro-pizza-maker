@@ -87,7 +87,6 @@ class PizzaMenu:
     def add_pizza(self, pizza: Pizza) -> None:
         # TODO: code a function that adds a pizza to the menu
         self.pizzas.append(pizza)
-        pass
 
     def remove_pizza(self, pizza: Pizza) -> None:
         # TODO: code a function that removes a pizza from the menu
@@ -97,7 +96,6 @@ class PizzaMenu:
             self.pizzas.remove(pizza)
         else:
             raise ValueError("The pizza, you want to remove, is not an element of the menu.")
-        pass
 
     def __len__(self) -> int:
         # TODO: return the number of pizzas in the menu
